@@ -37,3 +37,54 @@ let links = document.querySelectorAll('a').forEach(links =>{
     }
 
 });
+
+const firebaseConfig = {
+    apiKey: "AIzaSyA5UnWihlRlZSYR9FVhjc4varNPlitpu9U",
+    authDomain: "personal-website-cb97d.firebaseapp.com",
+    databaseURL: "https://personal-website-cb97d-default-rtdb.firebaseio.com",
+    projectId: "personal-website-cb97d",
+    storageBucket: "personal-website-cb97d.appspot.com",
+    messagingSenderId: "45529020178",
+    appId: "1:45529020178:web:037f06dfa4ddb81f0a65cb"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  var contactFormDB = firebase.database().ref('contactForm');
+
+  document.getElementById('contactForm').addEventListener('submit',submitForm);
+
+  function submitForm(e){
+    e.preventDefault();
+
+    var name = getElementVal('name');
+    var emailid = getElementVal('emailid');
+    var number = getElementVal('number');
+    var msgContent = getElementVal('msgContent');
+
+    saveMessages(name, emailid, number, msgContent);
+
+        document.querySelector('.alert').style.display = "block";
+
+        setTimeout(() => {
+            document.querySelector('.alert').style.display = "none";
+        }, 2000);
+
+        document.getElementById('contactForm').reset()
+
+  }
+
+  const saveMessages = (name, emailid, number, msgContent) => {
+    var newContactForm = contactFormDB.push();
+
+    newContactForm.set({
+        name : name,
+        emailid : emailid,
+        number : number,
+        msgContent : msgContent,
+    })
+  }
+
+  const getElementVal = (id) => {
+    return document.getElementById(id).value;
+  }

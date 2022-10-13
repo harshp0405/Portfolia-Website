@@ -281,13 +281,15 @@
 
     <div class="row">
 
-        <form action="">
+        <form action="" id="contactForm">
+            <br>
+            <div class="alert">your message sent !!</div>
 
-            <input type="text" placeholder="name" class="box">
-            <input type="email" placeholder="email" class="box">
-            <input type="number" placeholder="number" class="box">
+            <input type="text" id="name" placeholder="name" class="box">
+            <input type="email" id="emailid" placeholder="email" class="box">
+            <input type="number" id="number" placeholder="number" class="box">
 
-            <textarea name="" placeholder="message" id="" cols="30" rows="10"></textarea>
+            <textarea name="" id="msgContent" placeholder="message" id="" cols="30" rows="10"></textarea>
 
             <input type="submit" class="btn" value="send message">
 
@@ -304,7 +306,7 @@
 </section>
 
 <footer class="footer"> created by <span> mr. Harsh Prasad </span> | all rights reserved! </footer>
-    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script> 
 <script src="js/script.js"></script>
 
 </body>
